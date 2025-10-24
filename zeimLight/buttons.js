@@ -38,7 +38,8 @@ function initButtons()
 		"left":37,
 		"up":38,
 		"right":39,
-		"down":12,
+		// "down":12,
+		"down":40,
 		"space":32,
 
 		"[":219,
@@ -72,7 +73,8 @@ function initButtons()
 	{
 		let button = getButton(event.keyCode)
 
-		if(button === null)
+		// if(button === null)
+		if(!button)
 		{
 			return
 		}
@@ -87,7 +89,8 @@ function initButtons()
 	{
 		let button = getButton(event.keyCode)
 
-		if(button === null)
+		// if(button === null)
+		if(!button)
 		{
 			return
 		}

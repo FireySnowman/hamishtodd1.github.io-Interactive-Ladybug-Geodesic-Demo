@@ -1,0 +1,150 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<style>
+			body {
+				margin: 0px;
+				overflow: hidden;
+			}
+		</style>
+	</head>
+	<body>
+		<script src="lib/three.js"></script>
+		<script src="lib/closestDistanceBetweenLines.js"></script>
+
+		<!--<script src="lib/tensorflow.js"></script>-->
+
+		<script src="lib/OBJLoader.js"></script>
+		
+		<script src="windowResizeSystem.js"></script>
+		<script src="miscFunctions.js"></script>
+		<script src="mouseControlSystem.js"></script>
+		<script src="images.js"></script>
+		<script src="text.js"></script>
+		<script src="units/mirzakhani.js"></script>
+		<script src="units/surfaces.js"></script>
+
+		<!-- <script src="units/bayes.js"></script>
+		<script src="units/bayesNets.js"></script> -->
+		<!-- <script src="units/clt.js"></script>
+		<script src="units/fieldSculptor.js"></script> -->
+
+		<!-- <script src="units/shaderExperimentation.js"></script> -->
+
+		<!-- <script src="units/bioBlobbyDiagramMaker.js"></script> -->
+
+		<!-- <script src="units/pwg.js"></script> -->
+		<!-- <script src="units/threeSphereExploration.js"></script>
+		<script src="units/surfaces.js"></script> -->
+		<!-- <script src="units/polyamory.js"></script> -->
+		<!-- <script src="units/trafficWaves.js"></script> -->
+
+		<!-- <script src="units/surfacesGame.js"></script> -->
+		<!-- <script src="../mixedReality/units/surfaces.js"></script> -->
+		<script src="units/crystallography.js"></script>
+
+		<script src="units/reactionDiffusion.js"></script>
+
+	    <script src="toyArrangement.js"></script>
+
+	    <script src="slider.js"></script>
+
+	    <!-- <script src="lib/DeviceOrientationControls.js"></script>
+	    <script src="units/orientationOutput.js"></script> -->
+ 
+		<script src="variables.js"></script>
+		<script src="buttons.js"></script>
+
+		<script>
+			const PUBLIC_FACING = true;
+
+			{
+				// initButtons()
+
+				renderer = new THREE.WebGLRenderer({ antialias: true });
+				renderer.setPixelRatio( window.devicePixelRatio );
+				renderer.setClearColor(0xCCCCCC) //youtube
+				renderer.shadowMap.enabled = true;
+				renderer.shadowMap.type = THREE.BasicShadowMap;
+				document.body.appendChild( renderer.domElement );
+
+				initCameraAndRendererResizeSystem(renderer);
+				var stage = initSurroundings();
+				initMouse();
+				initButtons()
+				// initFaceMaker()
+			}
+
+			function render()
+			{
+				{
+					frameDelta = clock.getDelta();
+					
+					mouse.updateFromAsyncAndCheckClicks();
+
+					// for(var i = 0; i < updateFunctions.length; i++)
+					// {
+					// 	updateFunctions[i].update();
+					// }
+					for(var i = 0; i < updateFunctions.length; i++)
+					{
+						if( typeof updateFunctions[i] === 'function' )
+						{
+							updateFunctions[i](); // Call it if it's a function
+						}
+						else if ( typeof updateFunctions[i].update === 'function' )
+						{
+							updateFunctions[i].update(); // Call .update() if it's an object
+						}
+					}
+
+					frameCount++;
+				}
+
+				requestAnimationFrame( render );
+				renderer.render( scene, camera );
+			}
+
+			// initCrystallography()
+			initGeodesics()
+			render()
+
+			// {
+			// 	var textureLoader = new THREE.TextureLoader();
+			// 	textureEquirec = textureLoader.load( "textures/2294472375_24a3b8ef46_o.jpg" );
+			// 	textureEquirec.mapping = THREE.EquirectangularReflectionMapping;
+			// 	textureEquirec.magFilter = THREE.LinearFilter;
+			// 	textureEquirec.minFilter = THREE.LinearMipMapLinearFilter;
+			// 	textureEquirec.encoding = THREE.sRGBEncoding;
+
+			// 	// Materials
+			// 	var equirectShader = THREE.ShaderLib[ "equirect" ];
+			// 	var equirectMaterial = new THREE.ShaderMaterial( {
+			// 		fragmentShader: equirectShader.fragmentShader,
+			// 		vertexShader: equirectShader.vertexShader,
+			// 		uniforms: equirectShader.uniforms,
+			// 		depthWrite: false,
+			// 		side: THREE.BackSide
+			// 	} );
+			// 	equirectMaterial.uniforms[ "tEquirect" ].value = textureEquirec;
+			// 	// enable code injection for non-built-in material
+			// 	Object.defineProperty( equirectMaterial, 'map', {
+			// 		get: function () {
+			// 			return this.uniforms.tEquirect.value;
+			// 		}
+			// 	} );
+
+			// 	var params = {
+			// 		Equirectangular: function () {
+			// 			cubeMesh.material = equirectMaterial;
+			// 			cubeMesh.visible = true;
+			// 			sphereMaterial.envMap = textureEquirec;
+			// 			sphereMaterial.needsUpdate = true;
+			// 		},
+			// 		Refraction: false
+			// 	};
+			// }
+		</script>
+	</body>
+</html>

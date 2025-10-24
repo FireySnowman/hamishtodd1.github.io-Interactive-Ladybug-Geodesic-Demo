@@ -1,0 +1,69 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<style>
+			body {
+				margin: 0px;
+				overflow: hidden;
+			}
+		</style>
+	</head>
+	<body>
+		<script src="lib/three.js"></script>
+
+		<!--<script src="lib/tensorflow.js"></script>-->
+
+		<script src="lib/OBJLoader.js"></script>
+		
+		<script src="windowResizeSystem.js"></script>
+		<script src="miscFunctions.js"></script>
+		<script src="mouseControlSystem.js"></script>
+		<script src="images.js"></script>
+		<script src="text.js"></script>
+		<script src="units/mirzakhani.js"></script>
+		<script src="buttons.js"></script>
+
+		<!-- <script src="units/bayes.js"></script>
+		<script src="units/bayesNets.js"></script> -->
+		<!-- <script src="units/clt.js"></script> -->
+		<!-- <script src="units/datingPolyamory.js"></script>
+		<script src="units/dogGame.js"></script>
+		<script src="units/reactionDiffusion.js"></script> -->
+
+	    <script src="toyArrangement.js"></script>
+
+	    <!-- <script src="face.js"></script> -->
+
+		<script src="variables.js"></script>
+		<script src="init.js"></script>
+ 
+		<script>
+			const PUBLIC_FACING = false;
+			{
+				let render = init()
+
+				// initImagesAndVideos();
+				// initGeodesics()
+				// initMirzakhaniGraphTheory()
+
+				// initBayes()
+				// initBayesNets()
+				// initClt()
+
+				//list of images and videos should obviously be a toy
+				// initImagesAndVideos()
+
+				// initPolyamory()
+
+				// initReactionDiffusion()
+
+				// initShaderExperimentation()
+				initGeodesics()
+
+				arrangeToys()
+				render()
+			}
+		</script>
+	</body>
+</html>
