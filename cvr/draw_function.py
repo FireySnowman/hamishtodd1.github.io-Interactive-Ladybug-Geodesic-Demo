@@ -1,2 +1,0 @@
-def boog():
-	print("OOOOOOOOOOOOOOOOOOOOOOOOOO")
